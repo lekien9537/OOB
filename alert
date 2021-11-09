@@ -1,0 +1,26 @@
+#alert
+
+slack()
+{
+    echo "alert to slack"
+}
+
+
+email()
+{
+    echo "alert to email"
+}
+
+
+alert()
+{
+    echo "alert"
+
+}
+
+
+action()
+{
+    echo "action"
+
+}

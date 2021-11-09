@@ -1,0 +1,54 @@
+
+source get_info
+
+
+
+#get HP base info
+ilo_overall()
+{
+    echo ""
+}
+
+#get HP CPU hardware info
+ilo_cpu()
+{
+
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["cpu"]}.${ilo_cpu["status"]} -m "${ilo_cpu_status[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["cpu"]}.${ilo_cpu["brand_name"]} -m "${ilo_cpu_brand_name[@]}"
+
+}
+
+
+#get HP RAM hardware info
+ilo_ram()
+{
+
+    
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["ram"]}.${ilo_ram["status"]} -m "${ilo_ram_status[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["ram"]}.${ilo_ram["size"]} -m "${ilo_ram_size[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["ram"]}.${ilo_ram["manufacturer"]} -m "${ilo_ram_manufacturer[@]}"
+    
+
+}
+
+
+#get HP Disk hardware info
+ilo_disk()
+{
+
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["disk"]}.${ilo_disk["status"]} -m "${ilo_disk_status[@]}"
+
+}
+
+
+#get HP NIC hardware info
+ilo_nic()
+{
+
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["nic"]}.${ilo_nic["mac"]} -m "${ilo_nic_mac[@]}"
+
+}
+

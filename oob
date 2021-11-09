@@ -1,0 +1,74 @@
+
+source global_variables
+source msg
+source idrac/idrac
+source idrac/idrac_map_values
+source ilo/ilo
+source ilo/ilo_map_values
+
+
+
+
+#check option/condition
+
+check_op()
+{
+
+    local tmp=("--community_name" "--ip_address" "--port" "--status_info" "--raid_info" "--cpu_info" "--ram_info" "--disk_info" "--nic_info" "-cn" "-ip" "-p" "-s" "-rd" "-c" "-r" "-d" "-n")
+
+    for t in ${tmp[@]}; do
+        if [ -z "$COMMUNITY" ] || [ "$COMMUNITY" = "$t" ]
+        then
+            msg -h -m "COMMUNITY_NAME and COMMUNITY_NAME cannot be left blank"
+            msg -h2 "main.sh -h/--help for more information\n"
+            exit 0
+        fi
+        if [ -z "$IP" ] || [ "$COMMUNITY" = "$t" ]
+        then
+            msg -h -m "IP_ADDRESS and COMMUNITY_NAME cannot be left blank"
+            msg -h2 "main.sh -h/--help for more information\n"
+            exit 0
+        fi
+    done
+
+    if [ -z "$CPU" ] && [ -z "$RAM" ] && [ -z "$DISK" ] && [ -z "$NIC" ]
+    then
+        OVERALL="true"
+    fi
+ 
+}
+
+#check OOB supplier
+check_oob()
+{
+
+    local check="Sorry, this just support for IDRAC or ILO"
+
+    if [ "$1" = "idrac" ]
+    then
+        check=($(get_info -c $COMMUNITY -ip $IP:$PORT -ck -oid ${idrac['check']}))
+        if [ "$check" = "true" ]
+        then
+            TMP_CHECK_OOB="true"
+            
+        fi
+    fi
+
+    if [ "$1" = "ilo" -a  "$TMP_CHECK_OOB" = "false" ]
+    then
+        check=($(get_info -c $COMMUNITY -ip $IP:$PORT -ck -oid ${ilo['check']}))
+    fi
+
+
+     echo ${check[@]}
+
+}
+
+
+
+
+
+#---------
+
+
+

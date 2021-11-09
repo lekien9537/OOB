@@ -1,0 +1,84 @@
+
+source get_info
+
+#get Dell base info
+id_overall()
+{
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["overall"]}.${id_overall["status"]} -m "${id_overall_status[@]}"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["system"]}.${id_system["os_name"]} -m "${id_system_os_name[@]}"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["system"]}.${id_system["os_version"]} -m "${id_system_os_version[@]}"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["overall"]}.${id_overall["storage_status"]} -m "${id_overall_storage_status[@]}"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["overall"]}.${id_overall["uptime"]} -m "${id_overall_uptime[@]}"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["overall"]}.${id_overall["power_state"]} -m "${id_overall_power_state[@]}"
+}
+
+#get Dell CPU hardware info
+id_cpu()
+{
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["cpu"]}.${id_cpu["status"]} -m "${id_cpu_status[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["cpu"]}.${id_cpu["brand_name"]} -m $id_cpu_brand_name
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["cpu"]}.${id_cpu["max_speed"]} -m $id_cpu_max_speed
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["cpu"]}.${id_cpu["core_count"]} -m $id_cpu_core_count
+
+}
+
+
+#get Dell RAM hardware info
+id_ram()
+{
+    
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["ram"]}.${id_ram["status"]} -m "${id_ram_status[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["ram"]}.${id_ram["brand_name"]} -m "${id_ram_brand_name[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["ram"]}.${id_ram["size"]} -m $id_ram_size
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["ram"]}.${id_ram["serial_number"]} -m $id_ram_serial_number
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["ram"]}.${id_ram["speed"]} -m $id_ram_speed
+
+
+}
+
+
+
+#get Dell Disk hardware info
+id_disk()
+{
+
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["disk"]}.${id_disk["name"]} -m "${id_disk_name[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["disk"]}.${id_disk["status"]} -m "${id_disk_status[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["disk"]}.${id_disk["type"]} -m "${id_disk_type[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["disk"]}.${id_disk["manufacturer"]} -m "${id_disk_manufacturer[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["disk"]}.${id_disk["bus_type"]} -m "${id_disk_bus_type[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["disk"]}.${id_disk["space"]} -m "${id_disk_space[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["disk"]}.${id_disk["state"]} -m "${id_disk_state[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["disk"]}.${id_disk["max_speed"]} -m "${id_disk_max_speed[@]}"
+    
+
+}
+
+
+#get Dell NIC hardware info
+id_nic()
+{
+
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["nic"]}.${id_nic["product_name"]} -m "${id_nic_product_name[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["nic"]}.${id_nic["state"]} -m "${id_nic_state[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["nic"]}.${id_nic["mac"]} -m "${id_nic_mac[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${idrac["nic"]}.${id_nic["status"]} -m "${id_nic_status[@]}"
+
+}

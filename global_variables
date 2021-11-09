@@ -1,0 +1,63 @@
+#Global Variables
+
+
+PORT="161"
+BASE="true"
+IDRAC="false"
+ILO="false"
+TMP_CHECK_OOB="false"
+HELP_MSG="Script to get server's hardware information base on SNMP protocol.
+
+Usage: main.sh -cn [community_name] -ip [ip_address] , choose these options:
+  - h/--help:            Display this help message
+  - cn/--community_name: Community name 
+  - c/--cpu_info:        To get server CPU info
+  - d/--disk_info:       To get server DISK info
+  - ip/--ip_address:     Remote server ip address (for local, use localhost/127.0.0.1)
+  - r/--ram_info:        To get server RAM info
+  - n/--nic_info:        To get server NIC info
+  - o/--overall_info:    To get base info, this for DEFAULT
+  - p/--port:            Server's SNMP port 
+  
+Examples:
+  ./main.sh  -cn ABCD123!@# -ip 10.10.10.10 -c -r"
+
+while [[ $# > 0 ]]; do
+  key="$1"
+  shift
+  case $key in
+    -h|--help )
+      HELP="true"
+      ;;
+    -cn|--community_name )
+      COMMUNITY="$1"
+      shift
+      ;;
+    -p|--port )
+      PORT="$1"
+      shift
+      ;;
+    -ip|--ip_address )
+      IP="$1"
+      shift
+      ;;
+    -o|--overall_info )
+      OVERALL="true"
+      ;;
+    -c|--cpu_info )
+      CPU="true"
+      ;;
+    -r|--ram_info )
+      RAM="true"
+      ;;
+    -d|--disk_info )
+      DISK="true"
+      ;;
+    -n|--nic_info )
+      NIC="true"
+      ;;
+    *)   
+      ;;
+  esac
+done
+
