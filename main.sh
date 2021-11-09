@@ -1,7 +1,7 @@
 
 #!/bin/bash
 
-source oob
+source control
 
 main() 
 {

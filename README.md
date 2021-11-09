@@ -7,11 +7,18 @@ Let's find out.
 # 1. What is OOB?
 Out-Of-Band (OOB) Management (sometimes called lights-out management - LOM)  is a method of remotely controlling and managing **critical** IT assets and network equipment using a secure connection through a secondary interface that is physically separate from the primary network connection.
 
-<img src="images/OOB.jpg" />
+
+<p align="center">
+  <img src="images/OOB.jpg" width="50%"/>
+</p>
+
 
 You know FTP protocol, right? It uses out-of-band control: the Control connection and the Data connection separation:
 
-<img src="images/FTP.jpg" />
+<p align="center">
+  <img src="images/FTP.jpg" width="50%" />
+</p>
+
 
 # 2. How does OOB works?
 
@@ -23,7 +30,7 @@ You know FTP protocol, right? It uses out-of-band control: the Control connectio
 
 \- Severs support: [Dell iDRAC](https://www.dell.com/support/kbdoc/en-us/000179517/dell-poweredge-how-to-configure-the-idrac-system-management-options-on-servers#idracmenu), [HPE ILO](https://www.hpe.com/us/en/servers/integrated-lights-out-ilo.html), [Supermicro BMC](https://www.supermicro.com/en/solutions/management-software/bmc-resources) ....
 
-<img src="images/OOB_works.jpg" />
+<img src="images/OOB_works.jpg"  />
 
 # 3. Why do we need OOB?
 
@@ -46,7 +53,29 @@ No additional manually configure the network settings | Manually configure the n
 Only works after the operating system has been booted | Independent of the operation system
 Low cost, independent of the vendors | High cost, dependent of the vendors
 
-My Bash scripts using the SNMP protocol to get the server hardware information. Look into it to know more. Here is result:
+My Bash scripts using the SNMP protocol to get the server hardware information. 
+```
+Script to get server hardware information base on SNMP protocol.
 
-<img src="images/result.jpg" />
+Usage: main.sh -cn [community_name] -ip [ip_address] , choose these options:
+  - h/--help:            Display this help message
+  - cn/--community_name: Community name 
+  - c/--cpu_info:        To get server CPU info
+  - d/--disk_info:       To get server DISK info
+  - ip/--ip_address:     Remote server ip address (for local, use localhost/127.0.0.1)
+  - r/--ram_info:        To get server RAM info
+  - n/--nic_info:        To get server NIC info
+  - o/--overall_info:    To get base info, this for DEFAULT
+  - p/--port:            Server's SNMP port 
+  
+Examples:
+  ./main.sh  -cn ABCD123!@# -ip 10.10.10.10 -c -r
+```
+
+Look into it to know more. Here is result:
+
+
+<p align="center">
+  <img src="images/result.jpg" width="55%"  />
+</p>
 
