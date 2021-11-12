@@ -4,23 +4,23 @@ In the systems management, mostly we know about the In-Band Management method bu
 
 Let's find out.
 
-# 1. What is OOB?
+# What is OOB?
 Out-Of-Band (OOB) Management (sometimes called lights-out management - LOM)  is a method of remotely controlling and managing **critical** IT assets and network equipment using a secure connection through a secondary interface that is physically separate from the primary network connection.
 
 
 <p align="center">
-  <img src="images/OOB.jpg" width="50%"/>
+  <img src="images/OOB.jpg" width="45%"/>
 </p>
 
 
 You know FTP protocol, right? It uses out-of-band control: the Control connection and the Data connection separation:
 
 <p align="center">
-  <img src="images/FTP.jpg" width="50%" />
+  <img src="images/FTP.jpg" width="45%" />
 </p>
 
 
-# 2. How does OOB works?
+# How does OOB works?
 
 \- Independent of the production (main) network.
 
@@ -30,9 +30,11 @@ You know FTP protocol, right? It uses out-of-band control: the Control connectio
 
 \- Severs support: [Dell iDRAC](https://www.dell.com/support/kbdoc/en-us/000179517/dell-poweredge-how-to-configure-the-idrac-system-management-options-on-servers#idracmenu), [HPE ILO](https://www.hpe.com/us/en/servers/integrated-lights-out-ilo.html), [Supermicro BMC](https://www.supermicro.com/en/solutions/management-software/bmc-resources) ....
 
-<img src="images/OOB_works.jpg"  />
+<p align="center">
+  <img src="images/OOB_works.jpg" width="90%" />
+</p>
 
-# 3. Why do we need OOB?
+# Why do we need OOB?
 
 \- Allows remote reboot, shutdown, powering on the system.
 
@@ -76,6 +78,6 @@ Look into it to know more. Here is result:
 
 
 <p align="center">
-  <img src="images/result.jpg" width="55%"  />
+  <img src="images/result.jpg" width="50%"  />
 </p>
 

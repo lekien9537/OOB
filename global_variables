@@ -6,7 +6,7 @@ BASE="true"
 IDRAC="false"
 ILO="false"
 TMP_CHECK_OOB="false"
-HELP_MSG="Script to get server's hardware information base on SNMP protocol.
+HELP_MSG="Script to get server hardware information base on SNMP protocol.
 
 Usage: main.sh -cn [community_name] -ip [ip_address] , choose these options:
   - h/--help:            Display this help message
@@ -19,7 +19,7 @@ Usage: main.sh -cn [community_name] -ip [ip_address] , choose these options:
   - o/--overall_info:    To get base info, this for DEFAULT
   - p/--port:            Server's SNMP port 
   
-Examples:
+Examples: to get ram and cpu information
   ./main.sh  -cn ABCD123!@# -ip 10.10.10.10 -c -r"
 
 while [[ $# > 0 ]]; do

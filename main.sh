@@ -64,6 +64,14 @@ main()
     then
 
         msg -h -h1 "Get info hardware from ILO"
+
+        if [ "$OVERALL" = "true" ]
+        then
+            msg -h2 "OVERALL Info:"
+            ilo_overall
+
+        fi
+
         if [ "$CPU" = "true" ]
         then
             msg -h2 "CPU Info"
@@ -99,7 +107,6 @@ main()
     msg -f
 }
 
-# ./main.sh  -cn Mi725005d1 -ip 10.70.48.115
-# ./main.sh  -cn Mi725005d1 -ip 10.70.85.161
+
 
 main

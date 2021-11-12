@@ -6,7 +6,9 @@ source get_info
 #get HP base info
 ilo_overall()
 {
-    echo ""
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["overall"]}.${ilo_overall["server_model"]} -m "${ilo_overall_server_model[@]}"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["overall"]}.${ilo_overall["hardware_status"]} -m "${ilo_overall_hardware_status[@]}"
+    
 }
 
 #get HP CPU hardware info
@@ -16,6 +18,10 @@ ilo_cpu()
     get_info -c $COMMUNITY -ip $IP  -oid ${ilo["cpu"]}.${ilo_cpu["status"]} -m "${ilo_cpu_status[@]}"
     msg -m "-------------------------"
     get_info -c $COMMUNITY -ip $IP  -oid ${ilo["cpu"]}.${ilo_cpu["brand_name"]} -m "${ilo_cpu_brand_name[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["cpu"]}.${ilo_cpu["speed"]} -m "${ilo_cpu_speed[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["cpu"]}.${ilo_cpu["core_count"]} -m "${ilo_cpu_core_count[@]}"
 
 }
 
@@ -30,6 +36,8 @@ ilo_ram()
     get_info -c $COMMUNITY -ip $IP  -oid ${ilo["ram"]}.${ilo_ram["size"]} -m "${ilo_ram_size[@]}"
     msg -m "-------------------------"
     get_info -c $COMMUNITY -ip $IP  -oid ${ilo["ram"]}.${ilo_ram["manufacturer"]} -m "${ilo_ram_manufacturer[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["ram"]}.${ilo_ram["state"]} -m "${ilo_ram_state[@]}"
     
 
 }
@@ -39,7 +47,15 @@ ilo_ram()
 ilo_disk()
 {
 
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["disk"]}.${ilo_disk["model"]} -m "${ilo_disk_model[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["disk"]}.${ilo_disk["type"]} -m "${ilo_disk_type[@]}"
+    msg -m "-------------------------"
     get_info -c $COMMUNITY -ip $IP  -oid ${ilo["disk"]}.${ilo_disk["status"]} -m "${ilo_disk_status[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["disk"]}.${ilo_disk["size"]} -m "${ilo_disk_size[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["disk"]}.${ilo_disk["state"]} -m "${ilo_disk_state[@]}"
 
 }
 
@@ -48,7 +64,13 @@ ilo_disk()
 ilo_nic()
 {
 
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["nic"]}.${ilo_nic["modle"]} -m "${ilo_nic_modle[@]}"
+    msg -m "-------------------------"
     get_info -c $COMMUNITY -ip $IP  -oid ${ilo["nic"]}.${ilo_nic["mac"]} -m "${ilo_nic_mac[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["nic"]}.${ilo_nic["speed"]} -m "${ilo_nic_speed[@]}"
+    msg -m "-------------------------"
+    get_info -c $COMMUNITY -ip $IP  -oid ${ilo["nic"]}.${ilo_nic["status"]} -m "${ilo_nic_status[@]}"
 
 }
 
